@@ -1,11 +1,3 @@
--- ========================================================
--- DATABASE FOR ADVERTISING COMPANY
--- Compatible MySQL (WAMP)
--- ========================================================
-
--- 1️⃣ Create Database
-CREATE DATABASE IF NOT EXISTS decopeint;
-USE decopeint;
 
 -- ========================================================
 -- 2️⃣ TABLE CLIENT
@@ -37,7 +29,7 @@ CREATE TABLE type_service (
     nom_type VARCHAR(100) NOT NULL UNIQUE
 );
 
--- Example data
+-- Example static data
 INSERT INTO type_service (nom_type) VALUES 
 ('Impression'), 
 ('Panneau publicitaire'), 
@@ -51,7 +43,7 @@ CREATE TABLE service (
     id_client INT NOT NULL,
     id_type_service INT NOT NULL,
     description TEXT,
-    date_creation DATE DEFAULT CURRENT_DATE,
+    date_creation DATETIME DEFAULT CURRENT_TIMESTAMP,
     statut ENUM('EN_ATTENTE','EN_COURS','TERMINE') DEFAULT 'EN_ATTENTE',
     prix_total DECIMAL(12,2) NOT NULL,
     FOREIGN KEY (id_client) REFERENCES client(id_client) ON DELETE CASCADE,
@@ -64,7 +56,7 @@ CREATE TABLE service (
 CREATE TABLE paiement_vente (
     id_paiement INT AUTO_INCREMENT PRIMARY KEY,
     id_service INT NOT NULL,
-    date_paiement DATE DEFAULT CURRENT_DATE,
+    date_paiement DATETIME DEFAULT CURRENT_TIMESTAMP,
     montant DECIMAL(12,2) NOT NULL,
     mode_paiement VARCHAR(30),
     FOREIGN KEY (id_service) REFERENCES service(id_service) ON DELETE CASCADE
@@ -76,7 +68,7 @@ CREATE TABLE paiement_vente (
 CREATE TABLE achat (
     id_achat INT AUTO_INCREMENT PRIMARY KEY,
     id_fournisseur INT NOT NULL,
-    date_achat DATE DEFAULT CURRENT_DATE,
+    date_achat DATETIME DEFAULT CURRENT_TIMESTAMP,
     description TEXT,
     prix_total DECIMAL(12,2) NOT NULL,
     statut ENUM('EN_ATTENTE','EN_COURS','PAYE') DEFAULT 'EN_ATTENTE',
@@ -89,7 +81,7 @@ CREATE TABLE achat (
 CREATE TABLE paiement_achat (
     id_paiement_achat INT AUTO_INCREMENT PRIMARY KEY,
     id_achat INT NOT NULL,
-    date_paiement DATE DEFAULT CURRENT_DATE,
+    date_paiement DATETIME DEFAULT CURRENT_TIMESTAMP,
     montant DECIMAL(12,2) NOT NULL,
     mode_paiement VARCHAR(30),
     FOREIGN KEY (id_achat) REFERENCES achat(id_achat) ON DELETE CASCADE
@@ -102,7 +94,7 @@ CREATE TABLE bon (
     id_bon INT AUTO_INCREMENT PRIMARY KEY,
     type_operation ENUM('VENTE','ACHAT') NOT NULL,
     id_operation INT NOT NULL,
-    date_bon DATE DEFAULT CURRENT_DATE,
+    date_bon DATETIME DEFAULT CURRENT_TIMESTAMP,
     montant DECIMAL(12,2),
     remarque TEXT
 );
@@ -110,6 +102,7 @@ CREATE TABLE bon (
 -- ========================================================
 -- 10️⃣ Example static data for testing
 -- ========================================================
+
 -- Clients
 INSERT INTO client (nom, telephone, email, adresse) VALUES
 ('Alice Dupont','0612345678','alice@example.com','123 Rue A'),
