@@ -4,8 +4,8 @@
 -- ========================================================
 
 -- 1️⃣ Create Database
-CREATE DATABASE IF NOT EXISTS advertising_company;
-USE advertising_company;
+CREATE DATABASE IF NOT EXISTS decopeint;
+USE decopeint;
 
 -- ========================================================
 -- 2️⃣ TABLE CLIENT
