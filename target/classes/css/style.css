@@ -1,0 +1,214 @@
+/* ========== Global Styles ========== */
+.root {
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 14px;
+}
+
+/* ========== Login Page Styles ========== */
+.root-pane {
+    -fx-background-color: linear-gradient(to bottom right, #1e3c72, #2a5298);
+}
+
+.login-container {
+    -fx-background-color: white;
+    -fx-background-radius: 15px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 20, 0, 0, 5);
+}
+
+.logo-text {
+    -fx-fill: #2a5298;
+}
+
+.title-text {
+    -fx-fill: #1e3c72;
+}
+
+.subtitle-text {
+    -fx-fill: #666666;
+}
+
+.field-label {
+    -fx-text-fill: #333333;
+}
+
+.custom-text-field {
+    -fx-background-color: #f5f5f5;
+    -fx-background-radius: 8px;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+    -fx-padding: 12px;
+    -fx-font-size: 14px;
+}
+
+.custom-text-field:focused {
+    -fx-border-color: #2a5298;
+    -fx-background-color: white;
+}
+
+.login-button {
+    -fx-background-color: #2a5298;
+    -fx-text-fill: white;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-padding: 12px 20px;
+    -fx-font-weight: bold;
+}
+
+.login-button:hover {
+    -fx-background-color: #1e3c72;
+}
+
+.login-button:pressed {
+    -fx-background-color: #163058;
+}
+
+.error-label {
+    -fx-text-fill: #d32f2f;
+    -fx-background-color: #ffebee;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px;
+}
+
+.info-text {
+    -fx-fill: #888888;
+}
+
+/* ========== Dashboard Styles ========== */
+.dashboard-root {
+    -fx-background-color: #f0f2f5;
+}
+
+.navbar {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0, 0, 2);
+}
+
+.navbar-title {
+    -fx-fill: #1e3c72;
+}
+
+.user-label {
+    -fx-text-fill: #555555;
+}
+
+.logout-button {
+    -fx-background-color: #f44336;
+    -fx-text-fill: white;
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+    -fx-padding: 8px 16px;
+}
+
+.logout-button:hover {
+    -fx-background-color: #d32f2f;
+}
+
+.sidebar {
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 1 0 0;
+}
+
+.sidebar-header {
+    -fx-text-fill: #888888;
+    -fx-padding: 10px 15px;
+}
+
+.menu-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #555555;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+}
+
+.menu-button:hover {
+    -fx-background-color: #f0f2f5;
+}
+
+.active-menu {
+    -fx-background-color: #e3f2fd;
+    -fx-text-fill: #1976d2;
+    -fx-font-weight: bold;
+}
+
+.content-area {
+    -fx-background-color: transparent;
+}
+
+.page-title {
+    -fx-fill: #1e3c72;
+}
+
+/* ========== Statistics Cards ========== */
+.stat-card {
+    -fx-background-color: white;
+    -fx-background-radius: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 10, 0, 0, 2);
+}
+
+.stat-icon {
+    -fx-fill: #2a5298;
+}
+
+.stat-number {
+    -fx-text-fill: #1e3c72;
+}
+
+.stat-label {
+    -fx-text-fill: #666666;
+}
+
+/* ========== Performance Section ========== */
+.performance-section {
+    -fx-background-color: white;
+    -fx-background-radius: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 10, 0, 0, 2);
+}
+
+.section-title {
+    -fx-text-fill: #1e3c72;
+}
+
+.progress-label {
+    -fx-text-fill: #555555;
+}
+
+.progress-percentage {
+    -fx-text-fill: #2a5298;
+}
+
+.custom-progress {
+    -fx-accent: #4caf50;
+    -fx-background-radius: 8px;
+    -fx-pref-height: 12px;
+}
+
+.custom-progress .bar {
+    -fx-background-radius: 8px;
+    -fx-background-insets: 0;
+}
+
+.custom-progress .track {
+    -fx-background-color: #e0e0e0;
+    -fx-background-radius: 8px;
+}
+
+/* ========== Scrollbar Styling ========== */
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #cccccc;
+    -fx-background-radius: 5px;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #999999;
+}
+
+.scroll-bar .track {
+    -fx-background-color: transparent;
+}

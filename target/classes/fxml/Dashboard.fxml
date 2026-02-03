@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.advertising.controller.DashboardController"
+            styleClass="dashboard-root">
+
+    <!-- Top Navigation Bar -->
+    <top>
+        <HBox styleClass="navbar" alignment="CENTER_LEFT" spacing="20">
+            <padding>
+                <Insets top="15" right="20" bottom="15" left="20"/>
+            </padding>
+
+            <Text text="🎯 Advertising Management" styleClass="navbar-title">
+                <font>
+                    <Font name="System Bold" size="20"/>
+                </font>
+            </Text>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Label text="Welcome, Admin" styleClass="user-label">
+                <font>
+                    <Font size="14"/>
+                </font>
+            </Label>
+
+            <Button text="Logout" onAction="#handleLogout" styleClass="logout-button">
+                <font>
+                    <Font size="12"/>
+                </font>
+            </Button>
+        </HBox>
+    </top>
+
+    <!-- Left Sidebar Menu -->
+    <left>
+        <VBox styleClass="sidebar" spacing="10" minWidth="200">
+            <padding>
+                <Insets top="20" right="10" bottom="20" left="10"/>
+            </padding>
+
+            <Label text="NAVIGATION" styleClass="sidebar-header">
+                <font>
+                    <Font name="System Bold" size="11"/>
+                </font>
+            </Label>
+
+            <Button text="📊 Dashboard" styleClass="menu-button, active-menu" maxWidth="Infinity"
+                    alignment="CENTER_LEFT">
+                <padding>
+                    <Insets top="12" right="15" bottom="12" left="15"/>
+                </padding>
+            </Button>
+
+            <Button text="👥 Clients" styleClass="menu-button" maxWidth="Infinity"
+                    alignment="CENTER_LEFT" onAction="#handleClientsClick">
+                <padding>
+                    <Insets top="12" right="15" bottom="12" left="15"/>
+                </padding>
+            </Button>
+
+            <Button text="📦 Services" styleClass="menu-button" maxWidth="Infinity"
+                    alignment="CENTER_LEFT" onAction="#handleServicesClick">
+                <padding>
+                    <Insets top="12" right="15" bottom="12" left="15"/>
+                </padding>
+            </Button>
+
+            <Button text="🏭 Suppliers" styleClass="menu-button" maxWidth="Infinity"
+                    alignment="CENTER_LEFT" onAction="#handleSuppliersClick">
+                <padding>
+                    <Insets top="12" right="15" bottom="12" left="15"/>
+                </padding>
+            </Button>
+
+            <Button text="💰 Payments" styleClass="menu-button" maxWidth="Infinity"
+                    alignment="CENTER_LEFT" onAction="#handlePaymentsClick">
+                <padding>
+                    <Insets top="12" right="15" bottom="12" left="15"/>
+                </padding>
+            </Button>
+        </VBox>
+    </left>
+
+    <!-- Main Content Area -->
+    <center>
+        <VBox spacing="20" styleClass="content-area">
+            <padding>
+                <Insets top="30" right="30" bottom="30" left="30"/>
+            </padding>
+
+            <Text text="Dashboard Overview" styleClass="page-title">
+                <font>
+                    <Font name="System Bold" size="28"/>
+                </font>
+            </Text>
+
+            <!-- Statistics Cards -->
+            <HBox spacing="20" alignment="CENTER">
+                <!-- Total Services Card -->
+                <VBox styleClass="stat-card" spacing="10" alignment="CENTER" HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets top="25" right="20" bottom="25" left="20"/>
+                    </padding>
+
+                    <Text text="📦" styleClass="stat-icon">
+                        <font>
+                            <Font size="36"/>
+                        </font>
+                    </Text>
+
+                    <Label fx:id="totalServicesLabel" text="5" styleClass="stat-number">
+                        <font>
+                            <Font name="System Bold" size="32"/>
+                        </font>
+                    </Label>
+
+                    <Label text="Total Services" styleClass="stat-label">
+                        <font>
+                            <Font size="14"/>
+                        </font>
+                    </Label>
+                </VBox>
+
+                <!-- Total Sales Card -->
+                <VBox styleClass="stat-card" spacing="10" alignment="CENTER" HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets top="25" right="20" bottom="25" left="20"/>
+                    </padding>
+
+                    <Text text="💰" styleClass="stat-icon">
+                        <font>
+                            <Font size="36"/>
+                        </font>
+                    </Text>
+
+                    <Label fx:id="totalSalesLabel" text="$15,000" styleClass="stat-number">
+                        <font>
+                            <Font name="System Bold" size="32"/>
+                        </font>
+                    </Label>
+
+                    <Label text="Total Sales" styleClass="stat-label">
+                        <font>
+                            <Font size="14"/>
+                        </font>
+                    </Label>
+                </VBox>
+
+                <!-- Active Clients Card -->
+                <VBox styleClass="stat-card" spacing="10" alignment="CENTER" HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets top="25" right="20" bottom="25" left="20"/>
+                    </padding>
+
+                    <Text text="👥" styleClass="stat-icon">
+                        <font>
+                            <Font size="36"/>
+                        </font>
+                    </Text>
+
+                    <Label fx:id="activeClientsLabel" text="3" styleClass="stat-number">
+                        <font>
+                            <Font name="System Bold" size="32"/>
+                        </font>
+                    </Label>
+
+                    <Label text="Active Clients" styleClass="stat-label">
+                        <font>
+                            <Font size="14"/>
+                        </font>
+                    </Label>
+                </VBox>
+            </HBox>
+
+            <!-- Performance Section -->
+            <VBox spacing="15" styleClass="performance-section">
+                <padding>
+                    <Insets top="20" right="25" bottom="20" left="25"/>
+                </padding>
+
+                <Label text="Performance Overview" styleClass="section-title">
+                    <font>
+                        <Font name="System Bold" size="18"/>
+                    </font>
+                </Label>
+
+                <!-- Services Progress -->
+                <VBox spacing="8">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label text="Services Completed" styleClass="progress-label">
+                            <font>
+                                <Font size="13"/>
+                            </font>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label text="80%" styleClass="progress-percentage">
+                            <font>
+                                <Font name="System Bold" size="13"/>
+                            </font>
+                        </Label>
+                    </HBox>
+                    <ProgressBar fx:id="servicesProgress" progress="0.8" maxWidth="Infinity"
+                                 styleClass="custom-progress"/>
+                </VBox>
+
+                <!-- Client Satisfaction Progress -->
+                <VBox spacing="8">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label text="Client Satisfaction" styleClass="progress-label">
+                            <font>
+                                <Font size="13"/>
+                            </font>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label text="95%" styleClass="progress-percentage">
+                            <font>
+                                <Font name="System Bold" size="13"/>
+                            </font>
+                        </Label>
+                    </HBox>
+                    <ProgressBar fx:id="satisfactionProgress" progress="0.95" maxWidth="Infinity"
+                                 styleClass="custom-progress"/>
+                </VBox>
+
+                <!-- Revenue Goal Progress -->
+                <VBox spacing="8">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label text="Revenue Goal" styleClass="progress-label">
+                            <font>
+                                <Font size="13"/>
+                            </font>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label text="65%" styleClass="progress-percentage">
+                            <font>
+                                <Font name="System Bold" size="13"/>
+                            </font>
+                        </Label>
+                    </HBox>
+                    <ProgressBar fx:id="revenueProgress" progress="0.65" maxWidth="Infinity"
+                                 styleClass="custom-progress"/>
+                </VBox>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>
