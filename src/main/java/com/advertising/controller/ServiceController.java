@@ -105,14 +105,12 @@ public class ServiceController {
         // MAIN LAYOUT
         // ==========================
         VBox mainContent = new VBox(10, header, filtersSection, tableSection);
-        VBox.setVgrow(tableSection, Priority.ALWAYS); // Permet à la table de s'étendre
+        VBox.setVgrow(tableSection, Priority.ALWAYS);
 
-        // Créer un conteneur principal avec le contenu
-        VBox centerContent = new VBox(10, mainContent, statisticsPanel);
-        VBox.setVgrow(mainContent, Priority.ALWAYS); // Le contenu principal prend l'espace
-        VBox.setVgrow(statisticsPanel, Priority.NEVER); // Les statistiques gardent leur taille
-
-        root.setCenter(centerContent);
+        // CRITICAL FIX: Pin statistics panel to bottom using BorderPane.setBottom
+        // This prevents it from being pushed off-screen by other components
+        root.setCenter(mainContent);
+        root.setBottom(statisticsPanel);
 
         view = root;
     }
@@ -503,9 +501,10 @@ public class ServiceController {
         scrollPane.setFitToWidth(true);
         scrollPane.setFitToHeight(true);
         scrollPane.setStyle("-fx-background-color: transparent; -fx-background-radius: 8;");
-        scrollPane.setPrefHeight(350); // Hauteur raisonnable
+        // FIXED: Allow table to grow dynamically instead of fixed height
+        VBox.setVgrow(scrollPane, Priority.ALWAYS);
 
-        VBox tableSection = new VBox(5, scrollPane); // Une seule déclaration ici
+        VBox tableSection = new VBox(5, scrollPane);
         tableSection.setPadding(new Insets(5));
 
         return tableSection;

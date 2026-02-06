@@ -29,39 +29,44 @@ public class ServiceStatisticsPanel extends VBox {
     
     public ServiceStatisticsPanel() {
         setupLayout();
-        
+
         // Create statistics boxes
         VBox totalBox = createStatBox("💰 TOTAL", "#3498db");
         VBox paidBox = createStatBox("💵 PAYÉ", "#2ecc71");
         VBox remainingBox = createStatBox("⚖️ RESTE", "#e74c3c");
-          setMinHeight(120);
-    setPrefHeight(120);
+
         // Store direct references to value labels
         // These are at index 1 in each VBox (title is at 0, value label at 1)
         totalLabel = (Label) totalBox.getChildren().get(1);
         paidLabel = (Label) paidBox.getChildren().get(1);
         remainingLabel = (Label) remainingBox.getChildren().get(1);
-        
+
         // Initialize progress bar and label directly in constructor (required for final fields)
         paymentProgressBar = new ProgressBar(0);
         paymentProgressBar.setPrefWidth(450);
         paymentProgressBar.setPrefHeight(20);
         paymentProgressBar.setStyle("-fx-accent: #e74c3c;"); // Default to red (no payment)
-        
+
         progressPercentageLabel = new Label("0%");
         progressPercentageLabel.setStyle("-fx-font-size: 11px; " +
                                         "-fx-font-weight: bold; " +
                                         "-fx-text-fill: #2c3e50;");
-        
+
         // Create progress bar section
         VBox progressBox = createProgressBarSection();
-        
+
         // Arrange statistics boxes horizontally
         HBox statsRow = new HBox(15, totalBox, paidBox, remainingBox);
         statsRow.setAlignment(Pos.CENTER);
-        
+
         // Add all components
         getChildren().addAll(statsRow, progressBox);
+
+        // CRITICAL FIX: Set height constraints AFTER children are added
+        // This ensures the panel maintains its size and stays visible
+        setMinHeight(140);
+        setPrefHeight(140);
+        setMaxHeight(160);
     }
     
     private void setupLayout() {
